@@ -28,7 +28,7 @@ class _UnvalidatedUsersScreenState extends State<UnvalidatedUsersScreen> {
       });
     } catch (e) {
       setState(() {
-        unvalidatedUsers = _getDummyUsers(); // Use dummy data
+        unvalidatedUsers = _getDummyUsers(); 
       });
     }
   }
@@ -48,7 +48,6 @@ class _UnvalidatedUsersScreenState extends State<UnvalidatedUsersScreen> {
     var apiService = Provider.of<ApiService>(context, listen: false);
     try {
       await apiService.validatePractitioner(userId);
-      // Update the status locally to reflect validation
       setState(() {
         unvalidatedUsers = unvalidatedUsers.map((user) {
           if (user.id == userId) {
@@ -62,9 +61,7 @@ class _UnvalidatedUsersScreenState extends State<UnvalidatedUsersScreen> {
           return user;
         }).toList();
       });
-    } catch (e) {
-      // Handle error
-    }
+    } catch (e) {}
   }
 
   @override

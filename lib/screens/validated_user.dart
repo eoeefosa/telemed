@@ -7,7 +7,7 @@ class ValidatedUsersScreen extends StatefulWidget {
   const ValidatedUsersScreen({super.key});
 
   @override
-  _ValidatedUsersScreenState createState() => _ValidatedUsersScreenState();
+  State<ValidatedUsersScreen> createState() => _ValidatedUsersScreenState();
 }
 
 class _ValidatedUsersScreenState extends State<ValidatedUsersScreen> {
@@ -28,7 +28,7 @@ class _ValidatedUsersScreenState extends State<ValidatedUsersScreen> {
       });
     } catch (e) {
       setState(() {
-        validatedUsers = _getDummyUsers(); // Use dummy data
+        validatedUsers = _getDummyUsers(); 
       });
     }
   }
