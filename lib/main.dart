@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:telemed/screens/dashboard.dart';
 import 'package:telemed/services/api_service.dart';
@@ -15,17 +16,24 @@ class Telemed extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<ApiService>(
-          create: (_) => ApiService(), 
+          create: (_) => ApiService(),
         ),
       ],
-      child: MaterialApp(
-        title: 'Telemedicine Admin Panel',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
-          useMaterial3: true,
-        ),
-        home: const DashboardScreen(),
-      ),
+      child: ScreenUtilInit(
+          designSize: const Size(360, 690),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (_, child) {
+            return MaterialApp(
+              title: 'Telemedicine Admin Panel',
+              theme: ThemeData(
+                colorScheme:
+                    ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
+                useMaterial3: true,
+              ),
+              home: const DashboardScreen(),
+            );
+          }),
     );
   }
 }
